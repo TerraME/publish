@@ -7,7 +7,6 @@ This is a [TerraME](http://terrame.org) package that allows one to export the ou
 Publish is distributed under the GNU Lesser General Public License as published by the Free Software Foundation. See [publish-license-lgpl-3.0.txt](https://github.com/pedro-andrade-inpe/publish/blob/master/license.txt) for details. 
 
 ## Example
-
 (The example below will work after release 0.1)
 
 ```lua
