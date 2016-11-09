@@ -5,31 +5,12 @@
 import("publish")
 
 Application{
-	project = filePath("emas.tview", "publish"),
-	clean = true,
-	output = "EmasWebMap",
 	title = "Emas",
 	description = "A small example related to a fire spread model.",
-	order = {"limit", "river", "firebreak", "cells"},
-	river = View{
-		color = "blue"
-	},
-	firebreak = View{
-		color = "black"
-	},
-	limit = View{
-		description = "Bounding box of Emas National Park",
-		border = "blue",
-		color = "goldenrod",
-		width = 2,
-		visible = true
-	},
-	cells = View{
-		title = "Emas National Park",
-		description = "Cellular layer",
-		select = "river",
-		color = "PuBu",
-		width = 0,
-		value = {0, 1, 2}
-	}
+	project = filePath("emas.tview", "publish"),
+	clean = true,
+	select = "river",
+	color = "PuBu",
+	value = {0, 1, 2},
+	output = Directory("EmasWebMap")
 }
