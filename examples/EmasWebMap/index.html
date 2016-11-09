@@ -7,7 +7,7 @@
 		<title>Emas</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-		<link rel="stylesheet" href="./assets/publish.min.css"/>
+		<link rel="stylesheet" href="./assets/publish.css"/>
 	</head>
 	<body>
 		<div class="container">
@@ -33,10 +33,10 @@
 						</div>
 						<div id="layers" class="panel-collapse collapse in">
 							<div class="panel-body list-group">
-									<button id="limit" type="button" class="list-group-item"><i class="fa fa-globe"></i> limit</button>
 									<button id="river" type="button" class="list-group-item"><i class="fa fa-globe"></i> river</button>
-									<button id="firebreak" type="button" class="list-group-item"><i class="fa fa-globe"></i> firebreak</button>
+									<button id="limit" type="button" class="list-group-item"><i class="fa fa-globe"></i> limit</button>
 									<button id="cells" type="button" class="list-group-item"><i class="fa fa-globe"></i> cells</button>
+									<button id="firebreak" type="button" class="list-group-item"><i class="fa fa-globe"></i> firebreak</button>
 							</div>
 						</div>
 					</div>
@@ -48,8 +48,9 @@
 						</div>
 						<div id="properties" class="panel-collapse collapse in">
 							<div class="panel-body">
-								<p id="layer-title"></p>
-								<p id="layer-description"></p>
+								<p>
+									A small example related to a fire spread model.
+								</p>
 							</div>
 						</div>
 					</div>
@@ -66,26 +67,10 @@
 				<p>© 2016 Powered by package <a href="https://github.com/pedro-andrade-inpe/publish">publish</a> of <a href="http://www.terrame.org">TerraME</a>.</p>
 			</div>
 		</footer>
-		<div class="modal fade" id="modal-app-description" role="dialog">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Emas</h4>
-					</div>
-					<div class="modal-body">
-						<p>A small example related to a fire spread model.</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 		<script type="text/javascript" src="./assets/jquery-3.1.1.min.js"></script>
 		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="./config.js"></script>
-		<script type="text/javascript" src="./assets/publish.min.js"></script>
+		<script type="text/javascript" src="./assets/publish.js"></script>
 	</body>
 </html>

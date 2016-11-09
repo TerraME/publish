@@ -1,1 +1,20 @@
-var Publish = {"legend":"Legend","path":".\/data\/","maxZoom":20,"minZoom":0,"data":{"cells":{"order":1,"visible":false,"color":{"1":"rgba(166, 189, 219, 1)","2":"rgba(43, 140, 190, 1)","0":"rgba(236, 231, 242, 1)"},"description":"Cellular layer","select":"river","title":"Emas National Park","width":0},"limit":{"order":4,"border":"rgba(0, 0, 255, 1)","color":"rgba(218, 165, 32, 1)","description":"Bounding box of Emas National Park","visible":true,"width":2},"firebreak":{"order":2,"color":"rgba(0, 0, 0, 1)","visible":false,"width":1},"river":{"order":3,"color":"rgba(0, 0, 255, 1)","visible":false,"width":1}},"mapTypeId":"SATELLITE"};
+var Publish = {
+	zoom: null,
+	minZoom: 0,
+	maxZoom: 20,
+	mapTypeId: "SATELLITE",
+	legend: "Legend",
+	path: (function(){
+		var data = "./data/";
+		var url = "";
+		if(url)
+			return data + url + "/";
+		return data;
+	}()),
+	data: {
+		river: ["river", { 0: "rgba(236, 231, 242, 1)",1: "rgba(166, 189, 219, 1)",2: "rgba(43, 140, 190, 1)", }],
+		limit: ["river", { 0: "rgba(236, 231, 242, 1)",1: "rgba(166, 189, 219, 1)",2: "rgba(43, 140, 190, 1)", }],
+		cells: ["river", { 0: "rgba(236, 231, 242, 1)",1: "rgba(166, 189, 219, 1)",2: "rgba(43, 140, 190, 1)", }],
+		firebreak: ["river", { 0: "rgba(236, 231, 242, 1)",1: "rgba(166, 189, 219, 1)",2: "rgba(43, 140, 190, 1)", }],
+	}
+};
