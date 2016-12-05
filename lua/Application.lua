@@ -244,8 +244,9 @@ local function loadLayers(data)
 
 	forEachElement(data.view, function(name, view)
 		if view.color and not view.value and view.select then
-			local mview = clone(view, {type_ = true, value = true, width = true, transparency = true, visible = true})
+			local mview = clone(view, {type_ = true, value = true, width = true, transparency = true, visible = true, report = true})
 			mview.value = {}
+			mview.report = view.report
 
 			if view.width ~= 1 then
 				mview.width = view.width
@@ -348,7 +349,7 @@ local function createApplicationProjects(data, proj)
 		})
 
 		if value.report then
-			local mreports = value.report.reports
+			local mreports = value.report:get()
 			forEachElement(mreports, function(_, rp)
 				if rp.image then
 					local img = rp.image:name()
@@ -369,8 +370,7 @@ local function createApplicationProjects(data, proj)
 				end
 			end)
 
-			value.report.layer = name
-			table.insert(reports, value.report)
+			table.insert(reports, {title = value.report.title, author = value.report.author, layer = value.report.layer, reports = mreports})
 		elseif data.report then
 			local report = clone(data.report)
 			report.layer = name

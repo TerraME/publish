@@ -281,7 +281,7 @@ return {
 				width = 0,
 				select = "classe",
 				color = {"red", "orange", "yellow"},
-				value = {1, 2, 3},
+				transparency = 0.1,
 				report = report
 			},
 			use = View{
@@ -289,6 +289,7 @@ return {
 				description = "The occupational class describes the percentage of houses and apartments inside such areas that have occasional use.",
 				width = 0,
 				select = "uso",
+				transparency = 0.6,
 				color = {{255, 204, 255}, {242, 160, 241}, {230, 117, 228}, {214, 71, 212}, {199, 0, 199}},
 				value = {1, 2, 3, 4, 5},
 				report = reportUse
@@ -301,27 +302,51 @@ return {
 		unitTest:assert(app.output:exists())
 		unitTest:assertType(app.images, "Directory")
 		unitTest:assert(app.images:exists())
+		unitTest:assertNil(app.report)
 
-		unitTest:assertType(app.view.limit.report, "table")
-		unitTest:assertEquals(app.view.limit.report.title, "URBIS-Caraguá")
-		unitTest:assertType(app.view.limit.report.reports, "table")
-		unitTest:assertEquals(#app.view.limit.report.reports, 2)
-		unitTest:assertNotNil(app.view.limit.report.layer)
-		unitTest:assertEquals(app.view.limit.report.layer, "limit")
+		local view = app.view.limit
+		unitTest:assertType(view, "View")
+		unitTest:assertType(view.color, "string")
+		unitTest:assertType(view.report, "Report")
 
-		unitTest:assertType(app.view.real.report, "table")
-		unitTest:assertEquals(app.view.real.report.title, "URBIS-Caraguá")
-		unitTest:assertType(app.view.real.report.reports, "table")
-		unitTest:assertEquals(#app.view.real.report.reports, 2)
-		unitTest:assertNotNil(app.view.real.report.layer)
-		unitTest:assertEquals(app.view.real.report.layer, "real")
+		unitTest:assertEquals(view.color, "rgba(218, 165, 32, 1)")
+		unitTest:assertEquals(view.report.title, "URBIS-Caraguá")
 
-		unitTest:assertType(app.view.use.report, "table")
-		unitTest:assertEquals(app.view.use.report.title, "Occupational Classes")
-		unitTest:assertType(app.view.use.report.reports, "table")
-		unitTest:assertEquals(#app.view.use.report.reports, 1)
-		unitTest:assertNotNil(app.view.use.report.layer)
-		unitTest:assertEquals(app.view.use.report.layer, "use")
+		local reports = view.report:get()
+		unitTest:assertType(reports, "table")
+		unitTest:assertEquals(#reports, 2)
+
+		view = app.view.real
+		unitTest:assertType(view, "View")
+		unitTest:assertType(view.color, "table")
+		unitTest:assertType(view.report, "Report")
+
+		unitTest:assertEquals(getn(view.color), 3)
+		unitTest:assertEquals(view.color["1"], "rgba(255, 0, 0, 0.9)")
+		unitTest:assertEquals(view.color["2"], "rgba(255, 165, 0, 0.9)")
+		unitTest:assertEquals(view.color["3"], "rgba(255, 255, 0, 0.9)")
+		unitTest:assertEquals(view.report.title, "URBIS-Caraguá")
+
+		reports = view.report:get()
+		unitTest:assertType(reports, "table")
+		unitTest:assertEquals(#reports, 2)
+
+		view = app.view.use
+		unitTest:assertType(view, "View")
+		unitTest:assertType(view.color, "table")
+		unitTest:assertType(view.report, "Report")
+
+		unitTest:assertEquals(getn(view.color), 5)
+		unitTest:assertEquals(view.color["1"], "rgba(255, 204, 255, 0.4)")
+		unitTest:assertEquals(view.color["2"], "rgba(242, 160, 241, 0.4)")
+		unitTest:assertEquals(view.color["3"], "rgba(230, 117, 228, 0.4)")
+		unitTest:assertEquals(view.color["4"], "rgba(214, 71, 212, 0.4)")
+		unitTest:assertEquals(view.color["5"], "rgba(199, 0, 199, 0.4)")
+		unitTest:assertEquals(view.report.title, "Occupational Classes")
+
+		reports = view.report:get()
+		unitTest:assertType(reports, "table")
+		unitTest:assertEquals(#reports, 1)
 
 		assertFiles(app.output, appRoot)
 		assertFiles(app.assets, appAssets)

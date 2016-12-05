@@ -160,11 +160,13 @@ return {
 		unitTest:assertEquals(view.color["2"], "#0b7b47")
 		unitTest:assertEquals(view.color["3"], "#7b0b3f")
 
-		unitTest:assertType(view.report, "table")
+		unitTest:assertType(view.report, "Report")
 		unitTest:assertEquals(view.report.title, "URBIS-Caraguá")
 		unitTest:assertEquals(view.report.author, "Feitosa et. al (2014)")
-		unitTest:assertType(view.report.reports, "table")
-		unitTest:assertEquals(#view.report.reports, 2)
+
+		local reports = view.report:get()
+		unitTest:assertType(reports, "table")
+		unitTest:assertEquals(#reports, 2)
 	end,
 	__tostring = function(unitTest)
 		local view = View{

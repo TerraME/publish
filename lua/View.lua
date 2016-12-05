@@ -146,11 +146,6 @@ function View(data)
 		mandatoryTableArgument(data, "layer", "File")
 	end
 
-	if data.report then
-		local rp = data.report:get()
-		data.report = {title = data.report.title, author = data.report.author, reports = rp}
-	end
-
 	setmetatable(data, metaTableView_)
 	return data
 end
