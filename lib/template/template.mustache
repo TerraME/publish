@@ -181,6 +181,28 @@
 						<h4 class="custom-font-subtitle"><strong>{{heading}}</strong></h4>
 						<br/>
 						{{/heading}}
+						
+
+						<!-- Função Tablela -->
+						<table border="1" style="padding: 5px">
+							{{#tabela}}
+								<tr>
+									{{#th}}<th>{{.}}</th>{{/th}}
+								</tr>
+								<tr>
+									{{#td}}<td>{{.}}</td>{{/td}}
+								</tr>
+							{{/tabela}}
+						</table>
+
+
+						<!-- Função Multiplos -->
+						{{#multiplos}}
+							{{.}}
+						{{/multiplos}}
+						
+						
+						
 						{{#image}}
 						<img class="report-img" src="{{image}}"/>
 						<br/>

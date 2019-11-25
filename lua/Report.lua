@@ -93,6 +93,29 @@ Report_ = {
 		mandatoryArgument(1, "string", text)
 		self.text[self.nextIdx_] = text
 	end,
+	
+
+	-- Add a new tabela to the Report.
+	-- @arg text A mandatory string with the tabela to the report.
+	-- @usage import("publish")
+	-- local report = Report()
+	-- report:addText("My tabela")
+
+	addTabela = function(self, data)   --Nova function para criação de tabelas no modal do Report
+		self.tabela[self.nextIdx_] = data
+	end,
+
+	-- Add a list of multiple data to the Report.
+	-- @arg text A mandatory string with the tabela to the report.
+	-- @usage import("publish")
+	-- local report = Report()
+	-- report:addMultiplos("My multiplos")
+
+	addMultiplos = function(self, data)   --Nova function para criação de tabelas no modal do Report
+		self.multiplos[self.nextIdx_] = data
+	end,
+	
+
 	--- Return the Report created.
 	-- @usage import("publish")
 	-- local report = Report()
@@ -101,12 +124,22 @@ Report_ = {
 	get = function(self)
 		local template = {}
 		for i = 1, self.nextIdx_ - 1 do
-			table.insert(template, {text = self.text[i], separator = self.separator[i], image = self.image[i], heading = self.heading[i]})
+			table.insert(template, {
+				text = self.text[i], 
+				separator = self.separator[i], 
+				image = self.image[i], 
+				heading = self.heading[i], 
+				tabela = self.tabela[i], -- New function teste
+				multiplos = self.multiplos[i], -- New function teste
+				 }
+				) -- Passando parametros para a criação de um template
 		end
 
 		return template
 	end
 }
+
+
 
 metaTableReport_ = {
 	__index = Report_,
@@ -130,8 +163,20 @@ function Report(data)
 	verifyUnnecessaryArguments(data, {"title", "author"})
 	optionalTableArgument(data, "title", "string")
 	optionalTableArgument(data, "author", "string")
+	--optionalTableArgument(data, "tabela", "string")
 
-	local mdata = {nextIdx_ = 1, title = data.title, author = data.author, text = {}, image = {}, separator = {}, heading = {}}
+	local mdata = {
+		nextIdx_ = 1, 
+		title = data.title, 
+		author = data.author, 
+		text = {}, 
+		image = {}, 
+		separator = {}, 
+		heading = {}, 
+		tabela = {}, 
+		multiplos = {}, 
+		} -- Armazenando parametros da function addTabela
+
 	local metaTableIdxs = {
 		__newindex = function(self, k, v)
 			if v and not rawget(self, k) then
@@ -142,10 +187,12 @@ function Report(data)
 		end
 	}
 
-	setmetatable(mdata.text, metaTableIdxs)
-	setmetatable(mdata.image, metaTableIdxs)
-	setmetatable(mdata.separator, metaTableIdxs)
-	setmetatable(mdata.heading, metaTableIdxs)
+	setmetatable(mdata.text, 		metaTableIdxs)
+	setmetatable(mdata.image,	 	metaTableIdxs)
+	setmetatable(mdata.separator, 	metaTableIdxs)
+	setmetatable(mdata.heading, 	metaTableIdxs)
+	setmetatable(mdata.tabela, 		metaTableIdxs) -- function addTabela, para o Template
+	setmetatable(mdata.multiplos,	metaTableIdxs) -- function addMultiplos, para o Template
 	setmetatable(mdata, metaTableReport_)
 
 	return mdata
