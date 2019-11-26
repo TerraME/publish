@@ -101,7 +101,7 @@ Report_ = {
 	-- local report = Report()
 	-- report:addText("My tabela")
 
-	addTabela = function(self, data)   --Nova function para criação de tabelas no modal do Report
+	addTable = function(self, data)   --Nova function para criação de tabelas no modal do Report
 		self.tabela[self.nextIdx_] = data
 	end,
 
@@ -111,10 +111,10 @@ Report_ = {
 	-- local report = Report()
 	-- report:addMultiplos("My multiplos")
 
-	addMultiplos = function(self, data)   --Nova function para criação de tabelas no modal do Report
-		self.multiplos[self.nextIdx_] = data
+	addMult = function(self, data)   --Nova function para criação de tabelas no modal do Report
+		self.mult[self.nextIdx_] = data
 	end,
-	
+
 
 	--- Return the Report created.
 	-- @usage import("publish")
@@ -125,12 +125,12 @@ Report_ = {
 		local template = {}
 		for i = 1, self.nextIdx_ - 1 do
 			table.insert(template, {
-				text = self.text[i], 
-				separator = self.separator[i], 
-				image = self.image[i], 
-				heading = self.heading[i], 
+				text = self.text[i],
+				separator = self.separator[i],
+				image = self.image[i],
+				heading = self.heading[i],
 				tabela = self.tabela[i], -- New function teste
-				multiplos = self.multiplos[i], -- New function teste
+				mult = self.mult[i], -- New function teste
 				 }
 				) -- Passando parametros para a criação de um template
 		end
@@ -166,15 +166,15 @@ function Report(data)
 	--optionalTableArgument(data, "tabela", "string")
 
 	local mdata = {
-		nextIdx_ = 1, 
-		title = data.title, 
-		author = data.author, 
-		text = {}, 
-		image = {}, 
-		separator = {}, 
-		heading = {}, 
-		tabela = {}, 
-		multiplos = {}, 
+		nextIdx_ = 1,
+		title = data.title,
+		author = data.author,
+		text = {},
+		image = {},
+		separator = {},
+		heading = {},
+		tabela = {},
+		mult = {},
 		} -- Armazenando parametros da function addTabela
 
 	local metaTableIdxs = {
@@ -192,7 +192,7 @@ function Report(data)
 	setmetatable(mdata.separator, 	metaTableIdxs)
 	setmetatable(mdata.heading, 	metaTableIdxs)
 	setmetatable(mdata.tabela, 		metaTableIdxs) -- function addTabela, para o Template
-	setmetatable(mdata.multiplos,	metaTableIdxs) -- function addMultiplos, para o Template
+	setmetatable(mdata.mult,	metaTableIdxs) -- function addMultiplos, para o Template
 	setmetatable(mdata, metaTableReport_)
 
 	return mdata

@@ -26,7 +26,7 @@ Application{
 	description = "Small application with some data related to Brazil.", -- Manipulado o Description do Template
 	template = {navbar = "darkblue", title = "white", row = "black"}, -- Manipulando a navbar diretamente no Template
 	clean = false,
-	output = '/Applications/MAMP/htdocs/Aplication/Application05', -- Aplicativo de saída
+	output = 'Biomes-Simple-Table', -- Aplicativo de saída
 
    biomes = View{ --layer
 		select = "name", --legend
@@ -41,33 +41,47 @@ Application{
 		}
 
 
---[[
+
         mreport:addImage(filePath("biomes/"..cell.name..".jpg", "publish"))
         mreport:addText("For more information, please visit "..link(cell.link, "here")..".")
-        mreport:addText("Cover: "..cell.cover)
-        mreport:addHeading(""..cell.cover..","..cell.name..","..cell.link)
 
-]]--
-        ------ LOCAL TESTE -----------
 
-         -- Cria uma tabela com duas linhas (título e td).
+
+
+        ------ Creat Table -----------
+
         local TABELA = {
-                th = {1,2,3,4},
-                td = {"coluna 01", "coluna 02", "coluna 03", "coluna 04"}
-              }
+                title = { "Dados de "..cell.name},
+                th = {
+                     Col1 = "coluna01",
+                     Col2 = "coluna02",
+                     Col3 = "coluna03",
+                     Col4 = "coluna04",
+                     Col5 = "coluna05",
+                    },
 
-           mreport:addTabela(TABELA)
+                td = {
+
+                      {Col1 = cell.name, Col2 = cell.name, Col3 = cell.name, Col4 = cell.name, Col5 = cell.name, },
+                      {Col1 = cell.name, Col2 = cell.name, Col3 = cell.name, Col4 = cell.name, Col5 = cell.name, },
+                      {Col1 = cell.name, Col2 = cell.name, Col3 = cell.name, Col4 = cell.name, Col5 = cell.name, },
+                      {Col1 = cell.name, Col2 = cell.name, Col3 = cell.name, Col4 = cell.name, Col5 = cell.name, },
 
 
 
-           -- Usando este modo o layou exibe cada conteúdo uma única linha gerando as TD de forma correta.
-        mreport:addMultiplos{ cell.name, cell.cover, cell.name, cell.name, cell.name, cell.name}
+                     } -- end td
+                } -- end table
+
+           mreport:addTable(TABELA)
 
 
+                ------ End Creat Table -----------
 
 
+           -- Creat mult datas in line
 
-        ------------------------------
+           mreport:addMult{ cell.name, cell.cover, cell.link}
+
 
 			return mreport
 
