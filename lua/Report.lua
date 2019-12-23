@@ -93,28 +93,20 @@ Report_ = {
 		mandatoryArgument(1, "string", text)
 		self.text[self.nextIdx_] = text
 	end,
-	
-
-	-- Add a new tabela to the Report.
-	-- @arg text A mandatory string with the tabela to the report.
+	-- Add a new table to the Report.
 	-- @usage import("publish")
 	-- local report = Report()
-	-- report:addText("My tabela")
-
-	addTable = function(self, data)   --Nova function para criação de tabelas no modal do Report
-		self.tabela[self.nextIdx_] = data
+	-- report:addTable("My table")
+	addTable = function(self, data)
+		self.matrix[self.nextIdx_] = data
 	end,
-
 	-- Add a list of multiple data to the Report.
-	-- @arg text A mandatory string with the tabela to the report.
 	-- @usage import("publish")
 	-- local report = Report()
-	-- report:addMultiplos("My multiplos")
-
-	addMult = function(self, data)   --Nova function para criação de tabelas no modal do Report
+	-- report:addMultiples("My multiples")
+	addMult = function(self, data)
 		self.mult[self.nextIdx_] = data
 	end,
-
 
 	--- Return the Report created.
 	-- @usage import("publish")
@@ -129,7 +121,7 @@ Report_ = {
 				separator = self.separator[i],
 				image = self.image[i],
 				heading = self.heading[i],
-				tabela = self.tabela[i], -- New function teste
+				matrix = self.matrix[i], -- New function teste
 				mult = self.mult[i], -- New function teste
 				 }
 				) -- Passando parametros para a criação de um template
@@ -138,7 +130,6 @@ Report_ = {
 		return template
 	end
 }
-
 
 
 metaTableReport_ = {
@@ -163,7 +154,7 @@ function Report(data)
 	verifyUnnecessaryArguments(data, {"title", "author"})
 	optionalTableArgument(data, "title", "string")
 	optionalTableArgument(data, "author", "string")
-	--optionalTableArgument(data, "tabela", "string")
+	--optionalTableArgument(data, "tabela", "string") Pq eu comentei?
 
 	local mdata = {
 		nextIdx_ = 1,
@@ -173,7 +164,7 @@ function Report(data)
 		image = {},
 		separator = {},
 		heading = {},
-		tabela = {},
+		matrix = {},
 		mult = {},
 		} -- Armazenando parametros da function addTabela
 
@@ -191,8 +182,8 @@ function Report(data)
 	setmetatable(mdata.image,	 	metaTableIdxs)
 	setmetatable(mdata.separator, 	metaTableIdxs)
 	setmetatable(mdata.heading, 	metaTableIdxs)
-	setmetatable(mdata.tabela, 		metaTableIdxs) -- function addTabela, para o Template
-	setmetatable(mdata.mult,	metaTableIdxs) -- function addMultiplos, para o Template
+	setmetatable(mdata.matrix, 		metaTableIdxs) -- function addTable
+	setmetatable(mdata.mult,		metaTableIdxs) -- function addMultiples
 	setmetatable(mdata, metaTableReport_)
 
 	return mdata

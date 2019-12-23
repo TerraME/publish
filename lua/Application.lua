@@ -1460,7 +1460,7 @@ function Application(data)
 		end
 	end
 
-	if not belong(data.base, {"roadmap", "satellite", "hybrid", "terrain"}) then
+	if not belong(data.base, {"satellite", "roadmap", "hybrid", "terrain"}) then
 		customError("Basemap '"..data.base.."' is not supported.")
 	end
 

@@ -54,7 +54,7 @@
 					<div class="panel panel-default">
 						<div class="panel-heading padding-header" >
 							<h4 class="panel-title custom-font-subtitle">
-                                <i class="fa fa-list-alt"></i><a id="layers-title" data-toggle="collapse" href="#layers"> Layers</a>
+								<i class="fa fa-list-alt"></i><a id="layers-title" data-toggle="collapse" href="#layers"> Layers</a>
 								<span class="pull-right slide-submenu"><i class="fa fa-chevron-left"></i></span>
 							</h4>
 						</div>
@@ -131,7 +131,7 @@
 						<div id="slider">
 							<span class="glyphicon glyphicon-arrow-down" id="spanSelectedYear" style="left:99%;top:-17px;"></span>
 							<button class="position" id="play"><span class="glyphicon glyphicon-play"></span></button>
-       					</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -181,13 +181,9 @@
 						<h4 class="custom-font-subtitle"><strong>{{heading}}</strong></h4>
 						<br/>
 						{{/heading}}
-						
-
-
-						<!-- Seção de testes de novas funções -->
-						<!-- Função Tablela -->
+					<!-- Function Table -->
 						<table class="table table-hover">
-							{{#tabela}}
+							{{#matrix}}
 							<tr>
 								{{#title}}<th colspan="5" class="text-center">{{.}}</th>{{/title}}
 							<tr>
@@ -209,15 +205,14 @@
 											<td>{{Col5}}</td>
 										</tr>
 									{{/td}}
-							{{/tabela}}
+							{{/matrix}}
 						</table>
 						<br/>
-						<!-- Função Multiplos -->
+					<!-- Function Multiples -->
 						{{#mult}}
 							{{.}}
 						{{/mult}}
 						<br/>
-
 
 						{{#image}}
 						<img class="report-img" src="{{image}}"/>
