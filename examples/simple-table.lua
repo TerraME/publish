@@ -18,7 +18,7 @@ Application{
 	description = "Small application with some data related to Brazil.",
 	template = {navbar = "darkblue", title = "white"},
 	clean = false,
-	output = 'simple-table',
+	output = 'simple_table_01',
 
 	biomes = View{
 		select = "name",
