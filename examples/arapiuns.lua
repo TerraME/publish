@@ -45,6 +45,7 @@ Application{
 	description = description,
 	base = "roadmap",
 	template = {navbar = "darkblue", title = "white"},
+
 	trajectory = View{
 		description = "Route on the Arapiuns River.",
 		width = 2,

@@ -93,14 +93,24 @@ Report_ = {
 		mandatoryArgument(1, "string", text)
 		self.text[self.nextIdx_] = text
 	end,
-	-- Add a new table to the Report.
+	--- Add a new table to the Report.
+	-- @arg table accept string and data to the report.
 	-- @usage import("publish")
 	-- local report = Report()
 	-- report:addTable("My table")
 	addTable = function(self, data)
 		self.matrix[self.nextIdx_] = data
 	end,
-	-- Add a list of multiple data to the Report.
+	--- Add a new graphic to the Report.
+	-- @arg graphic/table accept string and data to the report.
+	-- @usage import("publish")
+	-- local report = Report()
+	-- report:addGraphic("My graphic")
+	addGraphic = function(self, data)
+		self.graphic[self.nextIdx_] = data
+	end,
+	--- Add multiple data to the Report.
+	-- @arg mult accept string and data with to the report.
 	-- @usage import("publish")
 	-- local report = Report()
 	-- report:addMultiples("My multiples")
@@ -121,10 +131,11 @@ Report_ = {
 				separator = self.separator[i],
 				image = self.image[i],
 				heading = self.heading[i],
-				matrix = self.matrix[i], -- New function teste
-				mult = self.mult[i], -- New function teste
+				matrix = self.matrix[i],
+				mult = self.mult[i],
+				graphic = self.graphic[i],
 				 }
-				) -- Passando parametros para a criação de um template
+				)
 		end
 
 		return template
@@ -154,7 +165,6 @@ function Report(data)
 	verifyUnnecessaryArguments(data, {"title", "author"})
 	optionalTableArgument(data, "title", "string")
 	optionalTableArgument(data, "author", "string")
-	--optionalTableArgument(data, "tabela", "string") Pq eu comentei?
 
 	local mdata = {
 		nextIdx_ = 1,
@@ -166,7 +176,8 @@ function Report(data)
 		heading = {},
 		matrix = {},
 		mult = {},
-		} -- Armazenando parametros da function addTabela
+		graphic = {},
+		}
 
 	local metaTableIdxs = {
 		__newindex = function(self, k, v)
@@ -182,8 +193,9 @@ function Report(data)
 	setmetatable(mdata.image,	 	metaTableIdxs)
 	setmetatable(mdata.separator, 	metaTableIdxs)
 	setmetatable(mdata.heading, 	metaTableIdxs)
-	setmetatable(mdata.matrix, 		metaTableIdxs) -- function addTable
-	setmetatable(mdata.mult,		metaTableIdxs) -- function addMultiples
+	setmetatable(mdata.matrix, 		metaTableIdxs)
+	setmetatable(mdata.mult,		metaTableIdxs)
+	setmetatable(mdata.graphic,		metaTableIdxs)
 	setmetatable(mdata, metaTableReport_)
 
 	return mdata

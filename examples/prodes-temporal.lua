@@ -50,6 +50,7 @@ end)
 Application{
 	project = proj,
 	base = "terrain",
+	output	= "/Applications/MAMP/htdocs/Aplication/Prodes",
 	prodes = View{
 		title = "Prodes",
 		description = "Monitoring of the Amazon Rainforest by Satellite.",

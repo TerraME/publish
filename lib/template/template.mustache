@@ -181,45 +181,57 @@
 						<h4 class="custom-font-subtitle"><strong>{{heading}}</strong></h4>
 						<br/>
 						{{/heading}}
-					<!-- Function Table -->
-						<table class="table table-hover">
-							{{#matrix}}
+						{{#graphic}}
+						<!-- Function addGraphic - Gera uma tabela oculta para apresentação do gráfico -->
+							<table class="table table-hover {{select}}-{{id}} hidden" id="data">
 							<tr>
-								{{#title}}<th colspan="5" class="text-center">{{.}}</th>{{/title}}
+								{{#title}}<th colspan="100%" class="text-center">{{.}}</th>{{/title}}
 							<tr>
 								<tr>
 									{{#th}}
-										<th>{{Col1}}</th>
-										<th>{{Col2}}</th>
-										<th>{{Col3}}</th>
-										<th>{{Col4}}</th>
-										<th>{{Col5}}</th>
+										<th>{{#.}}{{.}}{{/.}}</th>
 									{{/th}}
 								</tr>
 									{{#td}}
 										<tr>
-											<td>{{Col1}}</td>
-											<td>{{Col2}}</td>
-											<td>{{Col3}}</td>
-											<td>{{Col4}}</td>
-											<td>{{Col5}}</td>
+											{{#.}}<td>{{.}}</td>{{/.}}
 										</tr>
 									{{/td}}
-							{{/matrix}}
-						</table>
-						<br/>
-					<!-- Function Multiples -->
-						{{#mult}}
-							{{.}}
+							</table>
+							<div style="width: 800px; height: 500px">
+								<canvas class="chart" id="{{select}}-{{id}}" ></canvas>
+								<br/>
+							</div>
+						{{/graphic}}
+						{{#matrix}}
+						<!-- Function addTable - Gera a tabela sem o gráfico -->
+						<div class="table-responsive">
+							<table class="table table-hover table-responsive" id="data">
+								<tr>
+									{{#title}}<th colspan="100%" class="text-center">{{.}}</th>{{/title}}
+								</tr>
+								<tr>
+									{{#th}}
+										<th>{{#.}}{{.}}{{/.}}</th>
+									{{/th}}
+								</tr>
+									{{#td}}
+										<tr>
+											{{#.}}<td>{{.}}</td>{{/.}}
+										</tr>
+									{{/td}}
+							</table>
+						</div>
+						{{/matrix}}
+						{{#mult}}<!-- Function addMult-->
+							<p class="custom-font-body">{{.}}</p>
 						{{/mult}}
-						<br/>
-
 						{{#image}}
-						<img class="report-img" src="{{image}}"/>
-						<br/>
+							<img class="report-img" src="{{image}}"/>
+							<br/>
 						{{/image}}
 						{{#text}}
-						<p class="custom-font-body">{{text}}</p>
+							<p class="custom-font-body">{{text}}</p>
 						{{/text}}
 						{{#separator}}<hr>{{/separator}}
 					{{/reports}}
@@ -263,12 +275,16 @@
 			</div>
 		</div>
 		{{/hasScenario}}
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js{{#key}}?key={{key}}{{/key}}"></script>
 		<script type="text/javascript" src="./jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js{{#key}}?key={{key}}{{/key}}"></script>
 		{{#slider}}<script type="text/javascript" src="./jquery-ui.min.js"></script>{{/slider}}
 		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		{{#wms}}<script type="text/javascript" src="./geoambientev2.min.js"></script>{{/wms}}
 		<script type="text/javascript" src="./{{config}}"></script>
 		<script type="text/javascript" src="./publish.min.js"></script>
+		<!-- script graphic -->
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+		<script type="text/javascript" src="./graphic.js"></script>
+
 	</body>
 </html>
