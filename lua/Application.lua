@@ -975,7 +975,6 @@ local function processingView(data, layers, reports, name, view)
 			table.insert(reports, report)
 		end
 
-        _G.print(view.geom)
 		if view.icon and not belong(view.geom, {"Point", "MultiPoint", "LineString", "MultiLineString"}) then
 			if data.output:exists() then data.output:delete() end
 			customError("Argument 'icon' of View must be used only with the following geometries: 'Point', 'MultiPoint', 'LineString' and 'MultiLineString'.")
