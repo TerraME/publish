@@ -54,7 +54,6 @@ return {
 
 		local layer = gis.Layer{
 			project = proj,
-			source = "wms",
 			name = "wmsLayer",
 			service = service,
 			map = map
