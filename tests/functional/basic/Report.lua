@@ -153,7 +153,7 @@ return {
 		unitTest:assertEquals(getn(report.matrix), 1)
 		unitTest:assertEquals(getn(report.graphic), 0)
 		unitTest:assertEquals(getn(report.mult), 0)
-		unitTest:assertEquals(report.matrix[1], matrix)
+		unitTest:assertEquals(report.matrix[1], TABLE)
 	end,
 	addGraphic = function(unitTest)
 		local report = Report()
@@ -197,7 +197,7 @@ return {
 		unitTest:assertEquals(getn(report.matrix), 0)
 		unitTest:assertEquals(getn(report.graphic), 1)
 		unitTest:assertEquals(getn(report.mult), 0)
-		unitTest:assertEquals(report.graphic[1], graphic)
+		unitTest:assertEquals(report.graphic[1], GRAPHIC)
 	end,
 		addMult = function(unitTest)
 		local report = Report()

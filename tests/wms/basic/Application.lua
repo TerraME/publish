@@ -43,8 +43,8 @@ return {
 		local projFile = File("wms.tview")
 		projFile:deleteIfExists()
 
-		local service = "http://www.geoservicos.inde.gov.br:80/geoserver/ows"
-		local map = "MPOG:BASE_SPI_pol"
+		local service = "http://terrabrasilis.dpi.inpe.br/geoservices/redd-pac/wfs"
+		local map = "reddpac:wfs_biomes"
 		local proj = gis.Project{
 			title = "WMS",
 			author = "Carneiro, H.",
@@ -52,14 +52,13 @@ return {
 			clean = true
 		}
 
-		--[[
-		gis.Layer{
+		local layer = gis.Layer{
 			project = proj,
 			source = "wms",
 			name = "wmsLayer",
 			service = service,
 			map = map
-		} --]]
+		}
 
 		local app = Application{
 			project = proj,
@@ -67,6 +66,7 @@ return {
 			progress = false,
 			wmsLayer = View {
 				title = "WMS",
+                layer = layer,
 				description = "Loading a view from WMS.",
 				color = {{244,200,127}, {203,137,105}, {136,89,68}},
 				label = {"Class 1", "Class 2", "Class 3"},
