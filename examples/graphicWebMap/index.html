@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+		<title>Teste de dados Temporais</title>
+		
+		<!-- Grid -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- font -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+		
+		<link rel="stylesheet" href="./publish.min.css"/>
+	</head>
+	<body>
+		<div class="container">
+			<nav class="navbar navbar-fixed-top navbar-light" style="background-color: #1ea789;" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand custom-font-app-title" style="color: white;">Teste de dados Temporais</a>
+					</div>
+					
+				</div>
+			</nav>
+		</div>
+		<div class="navbar-offset"></div>
+		<div id="map-canvas">
+			<div id="map"></div>
+		</div>
+		<div class="row main-row">
+			<div class="col-sm-4 col-md-2 sidebar sidebar-left pull-left">
+				<div class="panel-group sidebar-body" id="accordion-left">
+					<div class="panel panel-default">
+						<div class="panel-heading padding-header" >
+							<h4 class="panel-title custom-font-subtitle">
+								<i class="fa fa-list-alt"></i><a id="layers-title" data-toggle="collapse" href="#layers"> Layers</a>
+								<span class="pull-right slide-submenu"><i class="fa fa-chevron-left"></i></span>
+							</h4>
+						</div>
+						<div id="layers" class="panel-collapse collapse in overflow-y">
+								<div class="panel-body list-group padding-body">
+										<label>
+											<input name="data" type="checkbox">
+											<a id="data" href="javascript:void(0);"> Data </a>
+										</label>
+								</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading padding-header">
+							<h4 class="panel-title custom-font-subtitle">
+								<i class="fa fa-list-alt"></i><a id="description-title" data-toggle="collapse" href="#properties"> Description</a>
+							</h4>
+						</div>
+						<div id="properties" class="panel-collapse collapse overflow-y">
+							<div class="panel-body padding-body">
+								<p class="custom-font-body" id="layer-description"></p>
+								<button id="more" type="button" class="btn btn-default custom-font-more" style="display:none;">
+									More
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading padding-header">
+							<h4 class="panel-title custom-font-subtitle">
+								<i class="fa fa-list-alt"></i><a id="legend-title" data-toggle="collapse" href="#legends"> Legend</a>
+							</h4>
+						</div>
+						<div id="legends" class="panel-collapse collapse overflow-y">
+							<div id="legend" class="panel-body padding-body custom-font-legend"></div>
+						</div>
+					</div>
+					<div id="panel-download" class="panel panel-default">
+						<div class="panel-heading padding-header" style="height: 29px;">
+							<h4 class="panel-title custom-font-subtitle">
+								<i class="fa fa-download"></i><a id="download-title"> Download</a>
+							</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mini-submenu mini-submenu-left pull-left">
+			<i class="fa fa-list-alt"></i>
+		</div>
+		<img id="loader" src="./default.gif" hidden="hidden"/>
+		<div id="loader-message"><h4 id="loader-message-text"></h4></div>
+		<footer class="navbar-default navbar-fixed-bottom">
+			<div id="footer" class="container-fluid">
+				<p>Powered by package <a href="https://github.com/TerraME/publish" target="_blank">publish</a> of <a href="http://www.terrame.org" target="_blank">TerraME</a>.</p>
+			</div>
+		</footer>
+		<div class="modal fade modal-player" id="modal-app-description" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title custom-font-subtitle">Teste de dados Temporais</h4>
+					</div>
+					<div class="modal-body">
+						<p class="custom-font-body">Small application with some data</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-info" data-dismiss="modal">Ok</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade modal-player" id="modal-report-dataC400L86" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-dataC400L86"> C400L86</h2>
+					</div>
+					<div class="modal-body" id="modal-report-text-dataC400L86">
+						<h4 class="custom-font-subtitle"><strong>First Graphic application</strong></h4>
+						<br/>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+													<p class="custom-font-body">This is application sample that show you a dynamic graphic, click on about the graphic label to turn on and turn off the graphic data</p>
+						
+						<!-- Function add Video Youtube/Vimeo -->
+												<hr>
+						<!-- Function add Video Youtube/Vimeo -->
+						<!-- Function addGraphic -->
+							<table class=" table table-hover C400L86-0 hidden" id="data">
+								<tr>
+									<th colspan="100%" class="text-center">Data of C400L86</th>
+								</tr>
+								<tr>
+									<th></th>
+										<th>area01</th>
+										<th>area02</th>
+										<th>area03</th>
+										<th>area04</th>
+										<th>area05</th>
+										<th>area06</th>
+										<th>area07</th>
+										<th>area08</th>
+										<th>area09</th>
+										<th>area10</th>
+								</tr>
+										<tr>
+											<td>dg dÁrea</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+										</tr>
+										<tr>
+											<td>d Área</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+										</tr>
+										<tr>
+											<td>mcwd</td><td>-162.543792725</td><td>-115.251098633</td><td>-160.021896362</td><td>-155.17640686</td><td>-108.004997253</td><td>-180.508102417</td><td>-138.487304688</td><td>-130.190200806</td><td>-130.98789978</td><td>-178.259094238</td>
+										</tr>
+							</table>
+							<div style="width: 800px; height: 500px">
+								<br/>
+								<canvas class="chart" id="C400L86-0" ></canvas>
+								<br/>
+							</div>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade modal-player" id="modal-report-dataC401L86" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-dataC401L86"> C401L86</h2>
+					</div>
+					<div class="modal-body" id="modal-report-text-dataC401L86">
+						<h4 class="custom-font-subtitle"><strong>First Graphic application</strong></h4>
+						<br/>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+													<p class="custom-font-body">This is application sample that show you a dynamic graphic, click on about the graphic label to turn on and turn off the graphic data</p>
+						
+						<!-- Function add Video Youtube/Vimeo -->
+												<hr>
+						<!-- Function add Video Youtube/Vimeo -->
+						<!-- Function addGraphic -->
+							<table class=" table table-hover C401L86-0 hidden" id="data">
+								<tr>
+									<th colspan="100%" class="text-center">Data of C401L86</th>
+								</tr>
+								<tr>
+									<th></th>
+										<th>area01</th>
+										<th>area02</th>
+										<th>area03</th>
+										<th>area04</th>
+										<th>area05</th>
+										<th>area06</th>
+										<th>area07</th>
+										<th>area08</th>
+										<th>area09</th>
+										<th>area10</th>
+								</tr>
+										<tr>
+											<td>dg dÁrea</td><td>0.0</td><td>23.9928744993</td><td>12.5316866682</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+										</tr>
+										<tr>
+											<td>d Área</td><td>0.0</td><td>24.547</td><td>0.0</td><td>31.928</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+										</tr>
+										<tr>
+											<td>mcwd</td><td>-162.543792725</td><td>-115.251098633</td><td>-160.021896362</td><td>-155.17640686</td><td>-108.004997253</td><td>-180.508102417</td><td>-138.487304688</td><td>-130.190200806</td><td>-130.98789978</td><td>-178.259094238</td>
+										</tr>
+							</table>
+							<div style="width: 800px; height: 500px">
+								<br/>
+								<canvas class="chart" id="C401L86-0" ></canvas>
+								<br/>
+							</div>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade modal-player" id="modal-report-dataC402L86" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-dataC402L86"> C402L86</h2>
+					</div>
+					<div class="modal-body" id="modal-report-text-dataC402L86">
+						<h4 class="custom-font-subtitle"><strong>First Graphic application</strong></h4>
+						<br/>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+													<p class="custom-font-body">This is application sample that show you a dynamic graphic, click on about the graphic label to turn on and turn off the graphic data</p>
+						
+						<!-- Function add Video Youtube/Vimeo -->
+												<hr>
+						<!-- Function add Video Youtube/Vimeo -->
+						<!-- Function addGraphic -->
+							<table class=" table table-hover C402L86-0 hidden" id="data">
+								<tr>
+									<th colspan="100%" class="text-center">Data of C402L86</th>
+								</tr>
+								<tr>
+									<th></th>
+										<th>area01</th>
+										<th>area02</th>
+										<th>area03</th>
+										<th>area04</th>
+										<th>area05</th>
+										<th>area06</th>
+										<th>area07</th>
+										<th>area08</th>
+										<th>area09</th>
+										<th>area10</th>
+								</tr>
+										<tr>
+											<td>dg dÁrea</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+										</tr>
+										<tr>
+											<td>d Área</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>29.104</td><td>0.0</td><td>9.442</td>
+										</tr>
+										<tr>
+											<td>mcwd</td><td>-170.853897095</td><td>-121.787796021</td><td>-166.705848694</td><td>-170.878807068</td><td>-113.734046936</td><td>-177.688201904</td><td>-141.58530426</td><td>-129.886253357</td><td>-146.306800842</td><td>-181.078643799</td>
+										</tr>
+							</table>
+							<div style="width: 800px; height: 500px">
+								<br/>
+								<canvas class="chart" id="C402L86-0" ></canvas>
+								<br/>
+							</div>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade modal-player" id="modal-report-dataC400L87" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-dataC400L87"> C400L87</h2>
+					</div>
+					<div class="modal-body" id="modal-report-text-dataC400L87">
+						<h4 class="custom-font-subtitle"><strong>First Graphic application</strong></h4>
+						<br/>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+													<p class="custom-font-body">This is application sample that show you a dynamic graphic, click on about the graphic label to turn on and turn off the graphic data</p>
+						
+						<!-- Function add Video Youtube/Vimeo -->
+												<hr>
+						<!-- Function add Video Youtube/Vimeo -->
+						<!-- Function addGraphic -->
+							<table class=" table table-hover C400L87-0 hidden" id="data">
+								<tr>
+									<th colspan="100%" class="text-center">Data of C400L87</th>
+								</tr>
+								<tr>
+									<th></th>
+										<th>area01</th>
+										<th>area02</th>
+										<th>area03</th>
+										<th>area04</th>
+										<th>area05</th>
+										<th>area06</th>
+										<th>area07</th>
+										<th>area08</th>
+										<th>area09</th>
+										<th>area10</th>
+								</tr>
+										<tr>
+											<td>dg dÁrea</td><td>328.238807384</td><td>12.8700365454</td><td>12.0948952638</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+										</tr>
+										<tr>
+											<td>d Área</td><td>0.0</td><td>408.882</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+										</tr>
+										<tr>
+											<td>mcwd</td><td>-162.543792725</td><td>-115.251098633</td><td>-160.021896362</td><td>-155.17640686</td><td>-108.004997253</td><td>-180.508102417</td><td>-138.487304688</td><td>-130.190200806</td><td>-130.98789978</td><td>-178.259094238</td>
+										</tr>
+							</table>
+							<div style="width: 800px; height: 500px">
+								<br/>
+								<canvas class="chart" id="C400L87-0" ></canvas>
+								<br/>
+							</div>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade modal-player" id="modal-report-dataC401L87" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-dataC401L87"> C401L87</h2>
+					</div>
+					<div class="modal-body" id="modal-report-text-dataC401L87">
+						<h4 class="custom-font-subtitle"><strong>First Graphic application</strong></h4>
+						<br/>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+													<p class="custom-font-body">This is application sample that show you a dynamic graphic, click on about the graphic label to turn on and turn off the graphic data</p>
+						
+						<!-- Function add Video Youtube/Vimeo -->
+												<hr>
+						<!-- Function add Video Youtube/Vimeo -->
+						<!-- Function addGraphic -->
+							<table class=" table table-hover C401L87-0 hidden" id="data">
+								<tr>
+									<th colspan="100%" class="text-center">Data of C401L87</th>
+								</tr>
+								<tr>
+									<th></th>
+										<th>area01</th>
+										<th>area02</th>
+										<th>area03</th>
+										<th>area04</th>
+										<th>area05</th>
+										<th>area06</th>
+										<th>area07</th>
+										<th>area08</th>
+										<th>area09</th>
+										<th>area10</th>
+								</tr>
+										<tr>
+											<td>dg dÁrea</td><td>15.5339082362</td><td>70.6351573743</td><td>83.9054452265</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+										</tr>
+										<tr>
+											<td>d Área</td><td>250.236</td><td>103.468</td><td>0.0</td><td>384.627</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+										</tr>
+										<tr>
+											<td>mcwd</td><td>-162.543792725</td><td>-115.251098633</td><td>-160.021896362</td><td>-155.17640686</td><td>-108.004997253</td><td>-180.508102417</td><td>-138.487304688</td><td>-130.190200806</td><td>-130.98789978</td><td>-178.259094238</td>
+										</tr>
+							</table>
+							<div style="width: 800px; height: 500px">
+								<br/>
+								<canvas class="chart" id="C401L87-0" ></canvas>
+								<br/>
+							</div>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade modal-player" id="modal-report-dataC402L87" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-dataC402L87"> C402L87</h2>
+					</div>
+					<div class="modal-body" id="modal-report-text-dataC402L87">
+						<h4 class="custom-font-subtitle"><strong>First Graphic application</strong></h4>
+						<br/>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+													<p class="custom-font-body">This is application sample that show you a dynamic graphic, click on about the graphic label to turn on and turn off the graphic data</p>
+						
+						<!-- Function add Video Youtube/Vimeo -->
+												<hr>
+						<!-- Function add Video Youtube/Vimeo -->
+						<!-- Function addGraphic -->
+							<table class=" table table-hover C402L87-0 hidden" id="data">
+								<tr>
+									<th colspan="100%" class="text-center">Data of C402L87</th>
+								</tr>
+								<tr>
+									<th></th>
+										<th>area01</th>
+										<th>area02</th>
+										<th>area03</th>
+										<th>area04</th>
+										<th>area05</th>
+										<th>area06</th>
+										<th>area07</th>
+										<th>area08</th>
+										<th>area09</th>
+										<th>area10</th>
+								</tr>
+										<tr>
+											<td>dg dÁrea</td><td>0.0</td><td>0.0</td><td>301.877824426</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+										</tr>
+										<tr>
+											<td>d Área</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+										</tr>
+										<tr>
+											<td>mcwd</td><td>-170.853897095</td><td>-121.787796021</td><td>-166.705848694</td><td>-170.878807068</td><td>-113.734046936</td><td>-177.688201904</td><td>-141.58530426</td><td>-129.886253357</td><td>-146.306800842</td><td>-181.078643799</td>
+										</tr>
+							</table>
+							<div style="width: 800px; height: 500px">
+								<br/>
+								<canvas class="chart" id="C402L87-0" ></canvas>
+								<br/>
+							</div>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade modal-player" id="modal-report-dataC400L88" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-dataC400L88"> C400L88</h2>
+					</div>
+					<div class="modal-body" id="modal-report-text-dataC400L88">
+						<h4 class="custom-font-subtitle"><strong>First Graphic application</strong></h4>
+						<br/>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+													<p class="custom-font-body">This is application sample that show you a dynamic graphic, click on about the graphic label to turn on and turn off the graphic data</p>
+						
+						<!-- Function add Video Youtube/Vimeo -->
+												<hr>
+						<!-- Function add Video Youtube/Vimeo -->
+						<!-- Function addGraphic -->
+							<table class=" table table-hover C400L88-0 hidden" id="data">
+								<tr>
+									<th colspan="100%" class="text-center">Data of C400L88</th>
+								</tr>
+								<tr>
+									<th></th>
+										<th>area01</th>
+										<th>area02</th>
+										<th>area03</th>
+										<th>area04</th>
+										<th>area05</th>
+										<th>area06</th>
+										<th>area07</th>
+										<th>area08</th>
+										<th>area09</th>
+										<th>area10</th>
+								</tr>
+										<tr>
+											<td>dg dÁrea</td><td>14.7625809596</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+										</tr>
+										<tr>
+											<td>d Área</td><td>0.0</td><td>53.865</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+										</tr>
+										<tr>
+											<td>mcwd</td><td>-162.543792725</td><td>-115.251098633</td><td>-160.021896362</td><td>-155.17640686</td><td>-108.004997253</td><td>-180.508102417</td><td>-138.487304688</td><td>-130.190200806</td><td>-130.98789978</td><td>-178.259094238</td>
+										</tr>
+							</table>
+							<div style="width: 800px; height: 500px">
+								<br/>
+								<canvas class="chart" id="C400L88-0" ></canvas>
+								<br/>
+							</div>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade modal-player" id="modal-report-dataC401L88" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-dataC401L88"> C401L88</h2>
+					</div>
+					<div class="modal-body" id="modal-report-text-dataC401L88">
+						<h4 class="custom-font-subtitle"><strong>First Graphic application</strong></h4>
+						<br/>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+													<p class="custom-font-body">This is application sample that show you a dynamic graphic, click on about the graphic label to turn on and turn off the graphic data</p>
+						
+						<!-- Function add Video Youtube/Vimeo -->
+												<hr>
+						<!-- Function add Video Youtube/Vimeo -->
+						<!-- Function addGraphic -->
+							<table class=" table table-hover C401L88-0 hidden" id="data">
+								<tr>
+									<th colspan="100%" class="text-center">Data of C401L88</th>
+								</tr>
+								<tr>
+									<th></th>
+										<th>area01</th>
+										<th>area02</th>
+										<th>area03</th>
+										<th>area04</th>
+										<th>area05</th>
+										<th>area06</th>
+										<th>area07</th>
+										<th>area08</th>
+										<th>area09</th>
+										<th>area10</th>
+								</tr>
+										<tr>
+											<td>dg dÁrea</td><td>16.8856760669</td><td>109.876828682</td><td>87.8700714057</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+										</tr>
+										<tr>
+											<td>d Área</td><td>4.346</td><td>51.739</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+										</tr>
+										<tr>
+											<td>mcwd</td><td>-162.543792725</td><td>-115.251098633</td><td>-160.021896362</td><td>-155.17640686</td><td>-108.004997253</td><td>-180.508102417</td><td>-138.487304688</td><td>-130.190200806</td><td>-130.98789978</td><td>-178.259094238</td>
+										</tr>
+							</table>
+							<div style="width: 800px; height: 500px">
+								<br/>
+								<canvas class="chart" id="C401L88-0" ></canvas>
+								<br/>
+							</div>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade modal-player" id="modal-report-dataC402L88" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-dataC402L88"> C402L88</h2>
+					</div>
+					<div class="modal-body" id="modal-report-text-dataC402L88">
+						<h4 class="custom-font-subtitle"><strong>First Graphic application</strong></h4>
+						<br/>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+													<p class="custom-font-body">This is application sample that show you a dynamic graphic, click on about the graphic label to turn on and turn off the graphic data</p>
+						
+						<!-- Function add Video Youtube/Vimeo -->
+												<hr>
+						<!-- Function add Video Youtube/Vimeo -->
+						<!-- Function addGraphic -->
+							<table class=" table table-hover C402L88-0 hidden" id="data">
+								<tr>
+									<th colspan="100%" class="text-center">Data of C402L88</th>
+								</tr>
+								<tr>
+									<th></th>
+										<th>area01</th>
+										<th>area02</th>
+										<th>area03</th>
+										<th>area04</th>
+										<th>area05</th>
+										<th>area06</th>
+										<th>area07</th>
+										<th>area08</th>
+										<th>area09</th>
+										<th>area10</th>
+								</tr>
+										<tr>
+											<td>dg dÁrea</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+										</tr>
+										<tr>
+											<td>d Área</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td>
+										</tr>
+										<tr>
+											<td>mcwd</td><td>-170.853897095</td><td>-121.787796021</td><td>-166.705848694</td><td>-170.878807068</td><td>-113.734046936</td><td>-177.688201904</td><td>-141.58530426</td><td>-129.886253357</td><td>-146.306800842</td><td>-181.078643799</td>
+										</tr>
+							</table>
+							<div style="width: 800px; height: 500px">
+								<br/>
+								<canvas class="chart" id="C402L88-0" ></canvas>
+								<br/>
+							</div>
+												
+						<!-- Function add Video Youtube/Vimeo -->
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-completed-description" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title custom-font-subtitle" id="modal-title-description"></h4>
+					</div>
+					<div class="modal-body">
+						<p class="custom-font-body" id="info-description"></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-info" data-dismiss="modal">Ok</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- JQuery -->
+		<script type="text/javascript" src="./jquery-1.9.1.min.js"></script>
+
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+		
+		<!-- JS BootStrap -->
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		
+		
+		<script type="text/javascript" src="./config.js"></script>
+		<script type="text/javascript" src="./publish.min.js"></script>
+		<!-- script graphic -->
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+		<script type="text/javascript" src="./graphic.js"></script>
+		<!-- script close player -->
+		<script type="text/javascript" src="./player.js"></script>
+
+
+	</body>
+</html>
+

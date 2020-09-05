@@ -42,7 +42,6 @@
 										<option value="{{view}}">{{scenario}}</option>
 										{{/scenarios}}
 									</select>
-
 									<p class="custom-font-body" id="scenario-description"></p>
 									<button id="more-scenario-description" type="button" class="btn btn-default custom-font-more" style="display:none;">
 										More
@@ -148,7 +147,7 @@
 			</div>
 		</footer>
 		{{#description}}
-		<div class="modal fade" id="modal-app-description" role="dialog">
+		<div class="modal fade modal-player" id="modal-app-description" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -165,7 +164,7 @@
 		</div>
 		{{/description}}
 		{{#report}}
-		<div class="modal fade" id="modal-report-{{layer}}{{select}}" role="dialog">
+		<div class="modal fade modal-player" id="modal-report-{{layer}}{{select}}" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -183,43 +182,45 @@
 						{{/heading}}
 						{{#graphic}}
 						<!-- Function addGraphic -->
-							<table class="table table-hover {{select}}-{{id}} hidden" id="data">
-							<tr>
-								{{#title}}<th colspan="100%" class="text-center">{{.}}</th>{{/title}}
-							<tr>
+							<table class="{{class}} table table-hover {{select}}-{{id}} hidden" id="data">
 								<tr>
-									{{#th}}
-										<th>{{#.}}{{.}}{{/.}}</th>
-									{{/th}}
+									{{#title}}<th colspan="100%" class="text-center">{{title}}</th>{{/title}}
 								</tr>
-									{{#td}}
+								<tr>
+									<th></th>
+									{{#columns}}
+										<th>{{#.}}{{.}}{{/.}}</th>
+									{{/columns}}
+								</tr>
+									{{#values}}
 										<tr>
 											{{#.}}<td>{{.}}</td>{{/.}}
 										</tr>
-									{{/td}}
+									{{/values}}
 							</table>
 							<div style="width: 800px; height: 500px">
+								<br/>
 								<canvas class="chart" id="{{select}}-{{id}}" ></canvas>
 								<br/>
 							</div>
 						{{/graphic}}
 						{{#matrix}}
 						<!-- Function addTable -->
-						<div class="table-responsive">
-							<table class="table table-hover table-responsive" id="data">
+						<div>
+							<table class="{{class}} table table-hover table-responsive" id="data">
 								<tr>
-									{{#title}}<th colspan="100%" class="text-center">{{.}}</th>{{/title}}
+									{{#title}}<th colspan="100%" class="text-center">{{title}}</th>{{/title}}
 								</tr>
 								<tr>
-									{{#th}}
+									{{#columns}}
 										<th>{{#.}}{{.}}{{/.}}</th>
-									{{/th}}
+									{{/columns}}
 								</tr>
-									{{#td}}
+									{{#values}}
 										<tr>
 											{{#.}}<td>{{.}}</td>{{/.}}
 										</tr>
-									{{/td}}
+									{{/values}}
 							</table>
 						</div>
 						{{/matrix}}
@@ -234,6 +235,13 @@
 							<p class="custom-font-body">{{text}}</p>
 						{{/text}}
 						{{#separator}}<hr>{{/separator}}
+						<!-- Function add Video Youtube/Vimeo -->
+						{{#video}}
+							<center>
+								<iframe width="{{width}}" height="{{heigh}}" src="{{url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+								</iframe>
+							</center>
+						{{/video}}
 					{{/reports}}
 					</div>
 					<div class="modal-footer">
@@ -282,9 +290,9 @@
 		{{#wms}}<script type="text/javascript" src="./geoambientev2.min.js"></script>{{/wms}}
 		<script type="text/javascript" src="./{{config}}"></script>
 		<script type="text/javascript" src="./publish.min.js"></script>
-		<!-- script graphic -->
 		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 		<script type="text/javascript" src="./graphic.js"></script>
+		<script type="text/javascript" src="./player.js"></script>
 
 	</body>
 </html>

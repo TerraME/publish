@@ -29,53 +29,88 @@ import("publish")
 
 
 Application{
-	project = filePath("brazil.tview", "publish"),
+	project = filePath("temporal-data.tview", "publish"),
+	--project = filePath("brazil.tview", "publish"),
 	title = "Brazil Application",
 	description = "Small application with some data related to Brazil.",
 	template = {navbar = "darkblue", title = "white"},
 	clean = false,
+	output	= "simple-tableWebMap",
 
-	biomes = View{
-		select = "name",
-		color = "Set2",
-		description = "Brazilian Biomes, from IBGE.",
-		download = true,
+
+	data = View{
+		color = "RdYlGn",
+		select  = "id_1",
+		description = "Dados de teste",
 		report = function(cell)
-		local mreport = Report{
-				title = cell.name,
-				author = "IBGE",
-				print(cell.name, cell.link, cell.cover)
-		}
+			local report = Report{
+				title = cell.id_1,
+				print(cell.id_1),
+			}
 
+			------ Text block ---------
+			report:addHeading("First Table application")
 
-		   mreport:addImage(filePath("biomes/"..cell.name..".jpg", "publish"))
-		   mreport:addText("For more information, please visit "..link(cell.link, "here")..".")
+			------ Creat Table -----------
+			local Table = {
+				title = "Table of "..cell.id_1,
+				columns = {
+						"area01",
+						"area02",
+						"area03",
+						"area04",
+						"area05",
+						"area06",
+						"area07",
+						"area08",
+						"area09",
+						"area10",
+					}, --end columns
+				values = {
+						{
+						cell.dg_darea06,
+						cell.dg_darea07,
+						cell.dg_darea08,
+						cell.dg_darea09,
+						cell.dg_darea10,
+						cell.dg_darea11,
+						cell.dg_darea12,
+						cell.dg_darea13,
+						cell.dg_darea14,
+						cell.dg_darea15,
+						},
 
-		   ------ Creat Table -----------
-		   local TABLE = {
-					title = { "Data of name"},
-			th = {
-				 "Label Column",
-				 "Title Column02",
-				 "Title Column03",
-				 "Title Column04",
-				 "Title Column5",
-			},
-			td = {
-				 {"Label01", "value", "value", "value", "value",},
-				 {"Label02", "value", "value", "value", "value",},
-				 {"Label03", "value", "value", "value", "value",},
-				 {"Label04", "value", "value", "value", "value",},
-				 }
-			}--end TABLE
+						{
+						cell.d_area02,
+						cell.d_area03,
+						cell.d_area04,
+						cell.d_area05,
+						cell.d_area06,
+						cell.d_area07,
+						cell.d_area08,
+						cell.d_area09,
+						cell.d_area10,
+						cell.d_area11,
+						},
 
-			mreport:addMatrix(TABLE)
-			------ End Creat Table -----------
+						{
+						cell.mcwd06,
+						cell.mcwd07,
+						cell.mcwd08,
+						cell.mcwd09,
+						cell.mcwd10,
+						cell.mcwd11,
+						cell.mcwd12,
+						cell.mcwd13,
+						cell.mcwd14,
+						cell.mcwd15,
+						},
 
-		   -- Creat mult datas in line
-			mreport:addMult{ cell.name, cell.cover, cell.link}
+					} -- end values
+				} -- end table
+			report:addMatrix(Table)
 
-			return mreport
+			return report
 		end
 	},
 
