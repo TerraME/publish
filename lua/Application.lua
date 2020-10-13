@@ -74,7 +74,6 @@ local function clone(tab, ignore)
 			end
 		end
 	end
-
 	return copy
 end
 
@@ -129,7 +128,7 @@ local function createDirectoryStructure(data)
 		data.assets:create() -- SKIP'
 	end
 
-	local depends = {"model/dist/publish.min.css", "model/dist/publish.min.js", "model/src/assets/jquery-1.9.1.min.js", "loader/"..data.loading}
+	local depends = {"model/dist/publish.min.css", "model/dist/publish.min.js", "model/src/assets/jquery-1.9.1.min.js","model/dist/graphic.js", "loader/"..data.loading}
 
 	if data.logo then
 		table.insert(depends, data.logo)
@@ -1460,7 +1459,7 @@ function Application(data)
 		end
 	end
 
-	if not belong(data.base, {"roadmap", "satellite", "hybrid", "terrain"}) then
+	if not belong(data.base, {"satellite", "roadmap", "hybrid", "terrain"}) then
 		customError("Basemap '"..data.base.."' is not supported.")
 	end
 

@@ -48,7 +48,7 @@ return {
 
 		local proj = buildProject()
 		gis.Layer{
-			project = proj,
+			--project = proj,
 			source = "wms",
 			name = "wmsLayer",
 			service = service,

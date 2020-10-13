@@ -119,6 +119,108 @@ return {
 		unitTest:assertEquals(getn(report.image), 0)
 		unitTest:assertEquals(report.text[1], text)
 	end,
+	addMatrix = function(unitTest)
+		local report = Report()
+		local TABLE = {
+			title = { "Data of name"},
+			th = {
+				 "Label Column",
+				 "Title Column02",
+				 "Title Column03",
+				 "Title Column04",
+				 "Title Column5",
+			},
+			td = {
+				 {"Label01", "value", "value", "value", "value",},
+				 {"Label02", "value", "value", "value", "value",},
+				 {"Label03", "value", "value", "value", "value",},
+				 {"Label04", "value", "value", "value", "value",},
+				 }
+			}
+
+		unitTest:assertType(report, "Report")
+		unitTest:assertNil(report.title)
+		unitTest:assertEquals(getn(report.text), 0)
+		unitTest:assertEquals(getn(report.image), 0)
+		unitTest:assertEquals(getn(report.matrix), 0)
+		unitTest:assertEquals(getn(report.graphic), 0)
+		unitTest:assertEquals(getn(report.mult), 0)
+
+		report:addMatrix(TABLE)
+
+		unitTest:assertEquals(getn(report.text), 0)
+		unitTest:assertEquals(getn(report.image), 0)
+		unitTest:assertEquals(getn(report.matrix), 1)
+		unitTest:assertEquals(getn(report.graphic), 0)
+		unitTest:assertEquals(getn(report.mult), 0)
+		unitTest:assertEquals(report.matrix[1], matrix)
+	end,
+	addGraphic = function(unitTest)
+		local report = Report()
+			local GRAPHIC = {
+				id = 0,
+				title = { "Name of graphic"},
+				th = {
+						"",
+						"area01",
+						"area02",
+						"area03",
+					},
+				td = {
+						{
+						"label of graphic",
+						math.random(),
+						math.random(),
+						math.random(),
+						},
+						{
+						"label of graphic",
+						math.random(),
+						math.random(),
+						math.random(),
+						},
+					}
+				}
+
+		unitTest:assertType(report, "Report")
+		unitTest:assertNil(report.title)
+		unitTest:assertEquals(getn(report.text), 0)
+		unitTest:assertEquals(getn(report.image), 0)
+		unitTest:assertEquals(getn(report.matrix), 0)
+		unitTest:assertEquals(getn(report.graphic), 0)
+		unitTest:assertEquals(getn(report.mult), 0)
+
+		report:addGraphic(GRAPHIC)
+
+		unitTest:assertEquals(getn(report.text), 0)
+		unitTest:assertEquals(getn(report.image), 0)
+		unitTest:assertEquals(getn(report.matrix), 0)
+		unitTest:assertEquals(getn(report.graphic), 1)
+		unitTest:assertEquals(getn(report.mult), 0)
+		unitTest:assertEquals(report.graphic[1], graphic)
+	end,
+		addMult = function(unitTest)
+		local report = Report()
+		local mult = "This is the main endogenous variable of the model."
+
+		unitTest:assertType(report, "Report")
+		unitTest:assertNil(report.title)
+		unitTest:assertEquals(getn(report.text), 0)
+		unitTest:assertEquals(getn(report.image), 0)
+		unitTest:assertEquals(getn(report.matrix), 0)
+		unitTest:assertEquals(getn(report.graphic), 0)
+		unitTest:assertEquals(getn(report.mult), 0)
+
+		report:addMult(mult)
+
+		unitTest:assertEquals(getn(report.text), 0)
+		unitTest:assertEquals(getn(report.image), 0)
+		unitTest:assertEquals(getn(report.matrix), 0)
+		unitTest:assertEquals(getn(report.graphic), 0)
+		unitTest:assertEquals(getn(report.mult), 1)
+		unitTest:assertEquals(report.mult[1], mult)
+	end,
+
 	get = function(unitTest)
 		local report = Report()
 
@@ -190,8 +292,11 @@ return {
 
 		unitTest:assertType(report, "Report")
 		unitTest:assertEquals(tostring(report), [[author     string [Carneiro, Heitor]
+graphic    vector of size 0
 heading    vector of size 0
 image      vector of size 0
+matrix     vector of size 0
+mult       vector of size 0
 nextIdx_   number [2]
 separator  vector of size 0
 text       vector of size 1

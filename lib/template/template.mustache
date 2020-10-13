@@ -54,7 +54,7 @@
 					<div class="panel panel-default">
 						<div class="panel-heading padding-header" >
 							<h4 class="panel-title custom-font-subtitle">
-                                <i class="fa fa-list-alt"></i><a id="layers-title" data-toggle="collapse" href="#layers"> Layers</a>
+								<i class="fa fa-list-alt"></i><a id="layers-title" data-toggle="collapse" href="#layers"> Layers</a>
 								<span class="pull-right slide-submenu"><i class="fa fa-chevron-left"></i></span>
 							</h4>
 						</div>
@@ -131,7 +131,7 @@
 						<div id="slider">
 							<span class="glyphicon glyphicon-arrow-down" id="spanSelectedYear" style="left:99%;top:-17px;"></span>
 							<button class="position" id="play"><span class="glyphicon glyphicon-play"></span></button>
-       					</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -181,14 +181,68 @@
 						<h4 class="custom-font-subtitle"><strong>{{heading}}</strong></h4>
 						<br/>
 						{{/heading}}
+						{{#graphic}}
+						<!-- Function addGraphic -->
+							<table class="{{class}} table table-hover {{select}}-{{id}} hidden" id="data">
+								<tr>
+									{{#title}}<th colspan="100%" class="text-center">{{.}}</th>{{/title}}
+								</tr>
+								<tr>
+									<th></th>
+									{{#th}}
+										<th>{{#.}}{{.}}{{/.}}</th>
+									{{/th}}
+								</tr>
+									{{#values}}
+										<tr>
+											{{#.}}<td>{{.}}</td>{{/.}}
+										</tr>
+									{{/values}}
+							</table>
+							<div style="width: 800px; height: 500px">
+								<br/>
+								<canvas class="chart" id="{{select}}-{{id}}" ></canvas>
+								<br/>
+							</div>
+						{{/graphic}}
+						{{#matrix}}
+						<!-- Function addTable -->
+						<div>
+							<table class="{{class}} table table-hover table-responsive" id="data">
+								<tr>
+									{{#title}}<th colspan="100%" class="text-center">{{.}}</th>{{/title}}
+								</tr>
+								<tr>
+									{{#th}}
+										<th>{{#.}}{{.}}{{/.}}</th>
+									{{/th}}
+								</tr>
+									{{#values}}
+										<tr>
+											{{#.}}<td>{{.}}</td>{{/.}}
+										</tr>
+									{{/values}}
+							</table>
+						</div>
+						{{/matrix}}
+						{{#mult}}<!-- Function addMult-->
+							<p class="custom-font-body">{{.}}</p>
+						{{/mult}}
 						{{#image}}
-						<img class="report-img" src="{{image}}"/>
-						<br/>
+							<img class="report-img" src="{{image}}"/>
+							<br/>
 						{{/image}}
 						{{#text}}
-						<p class="custom-font-body">{{text}}</p>
+							<p class="custom-font-body">{{text}}</p>
 						{{/text}}
 						{{#separator}}<hr>{{/separator}}
+						<!-- Function add Video -->
+						{{#video}}
+							<center>
+								<iframe width="{{width}}" height="{{heigh}}" src="{{url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+								</iframe>
+							</center>
+						{{/video}}
 					{{/reports}}
 					</div>
 					<div class="modal-footer">
@@ -230,12 +284,16 @@
 			</div>
 		</div>
 		{{/hasScenario}}
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js{{#key}}?key={{key}}{{/key}}"></script>
 		<script type="text/javascript" src="./jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js{{#key}}?key={{key}}{{/key}}"></script>
 		{{#slider}}<script type="text/javascript" src="./jquery-ui.min.js"></script>{{/slider}}
 		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		{{#wms}}<script type="text/javascript" src="./geoambientev2.min.js"></script>{{/wms}}
 		<script type="text/javascript" src="./{{config}}"></script>
 		<script type="text/javascript" src="./publish.min.js"></script>
+		<!-- script graphic -->
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+		<script type="text/javascript" src="./graphic.js"></script>
+
 	</body>
 </html>

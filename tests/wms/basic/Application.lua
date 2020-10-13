@@ -52,13 +52,14 @@ return {
 			clean = true
 		}
 
+		--[[
 		gis.Layer{
 			project = proj,
 			source = "wms",
 			name = "wmsLayer",
 			service = service,
 			map = map
-		}
+		} --]]
 
 		local app = Application{
 			project = proj,
