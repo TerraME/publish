@@ -123,18 +123,18 @@ return {
 		local report = Report()
 		local TABLE = {
 			title = { "Data of name"},
-			th = {
+			columns = {
 				 "Label Column",
 				 "Title Column02",
 				 "Title Column03",
 				 "Title Column04",
 				 "Title Column5",
 			},
-			td = {
-				 {"Label01", "value", "value", "value", "value",},
-				 {"Label02", "value", "value", "value", "value",},
-				 {"Label03", "value", "value", "value", "value",},
-				 {"Label04", "value", "value", "value", "value",},
+			values = {
+				 {math.random(), math.random(), math.random(),},
+				 {math.random(), math.random(), math.random(),},
+				 {math.random(), math.random(), math.random(),},
+				 {math.random(), math.random(), math.random(),},
 				 }
 			}
 
@@ -160,13 +160,12 @@ return {
 			local GRAPHIC = {
 				id = 0,
 				title = { "Name of graphic"},
-				th = {
-						"",
+				columns = {
 						"area01",
 						"area02",
 						"area03",
 					},
-				td = {
+				values = {
 						{
 						"label of graphic",
 						math.random(),
@@ -199,7 +198,7 @@ return {
 		unitTest:assertEquals(getn(report.mult), 0)
 		unitTest:assertEquals(report.graphic[1], graphic)
 	end,
-		addMult = function(unitTest)
+	addMult = function(unitTest)
 		local report = Report()
 		local mult = "This is the main endogenous variable of the model."
 
@@ -219,6 +218,32 @@ return {
 		unitTest:assertEquals(getn(report.graphic), 0)
 		unitTest:assertEquals(getn(report.mult), 1)
 		unitTest:assertEquals(report.mult[1], mult)
+	end,
+	addVideo = function(unitTest)
+		local report = Report()
+
+		unitTest:assertType(report, "Report")
+		unitTest:assertNil(report.title)
+		unitTest:assertEquals(getn(report.text), 0)
+		unitTest:assertEquals(getn(report.image), 0)
+		unitTest:assertEquals(getn(report.matrix), 0)
+		unitTest:assertEquals(getn(report.graphic), 0)
+		unitTest:assertEquals(getn(report.mult), 0)
+		unitTest:assertEquals(getn(report.video), 0)
+
+		report:addVideo{
+			width = 500,
+			heigh = 315,
+			url = "https://www.youtube.com/embed/q0_XODQ0GGg",
+		}
+
+		unitTest:assertEquals(getn(report.text), 0)
+		unitTest:assertEquals(getn(report.image), 0)
+		unitTest:assertEquals(getn(report.matrix), 0)
+		unitTest:assertEquals(getn(report.graphic), 0)
+		unitTest:assertEquals(getn(report.mult), 0)
+		unitTest:assertEquals(getn(report.video), 1)
+		unitTest:assertEquals(report.video[1], video)
 	end,
 
 	get = function(unitTest)
@@ -301,6 +326,7 @@ nextIdx_   number [2]
 separator  vector of size 0
 text       vector of size 1
 title      string [My Report]
+video      vector of size 0
 ]])
 	end
 }

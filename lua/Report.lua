@@ -117,7 +117,14 @@ Report_ = {
 	addMult = function(self, mult)
 		self.mult[self.nextIdx_] = mult
 	end,
-
+	--- Add a palyer of video to the Report.
+	-- @arg video accept URL string only.
+	-- @usage import("publish")
+	-- local report = Report()
+	-- report:addVideo("My video youtube/vimeo")
+	addVideo = function (self, video)
+		self.video[self.nextIdx_] = video
+	end,
 	--- Return the Report created.
 	-- @usage import("publish")
 	-- local report = Report()
@@ -134,6 +141,7 @@ Report_ = {
 				matrix = self.matrix[i],
 				mult = self.mult[i],
 				graphic = self.graphic[i],
+				video = self.video[i],
 				 })
 		end
 
@@ -175,6 +183,7 @@ function Report(data)
 		matrix = {},
 		mult = {},
 		graphic = {},
+		video = {},
 		}
 
 	local metaTableIdxs = {
@@ -194,6 +203,7 @@ function Report(data)
 	setmetatable(mdata.matrix, 		metaTableIdxs)
 	setmetatable(mdata.mult,		metaTableIdxs)
 	setmetatable(mdata.graphic,		metaTableIdxs)
+	setmetatable(mdata.video,		metaTableIdxs)
 	setmetatable(mdata, metaTableReport_)
 
 	return mdata

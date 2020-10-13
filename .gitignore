@@ -13,7 +13,6 @@ doc/
 # publish
 app/
 lib/template/model/node_modules/
-lib/template/model/package-lock.json
 
 # JetBrains
 .idea/
