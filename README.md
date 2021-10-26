@@ -102,7 +102,7 @@ Application{
     }
 }
 ```
-You can see the result in [Caragua](https://ghcdn.rawgit.org//TerraME/publish/master/examples/caraguaWebMap/index.html).
+You can see the result in [Caragua](https://ghcdn.rawgit.org/TerraME/publish/master/examples/caraguaWebMap/index.html).
 
 ```lua
 import("publish")
