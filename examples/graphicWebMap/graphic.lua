@@ -33,6 +33,7 @@ local content = {
 import("publish")
 
 Application{
+  key = "AIzaSyA1coAth-Bo7m99rnxOm2oOBB88AmaSbOk",
 	project = filePath("temporal-data.tview", "publish"),
 	base = "roadmap",
 	title	= "Teste de dados Temporais",
