@@ -31,7 +31,7 @@ Application{
 	project = filePath("brazil.tview", "publish"),
 	title = "Brazil Application",
 	description = "Small application with some data related to Brazil from "..link("www.ibge.gov.br", "IBGE")..".",
-	biomes = View{
+	biomes = View{git 
 		select = "name",
 --		color = "Set2", -- instead of using value/color
 		value = {"Caatinga", "Cerrado", "Amazonia", "Pampa", "Mata Atlantica", "Pantanal"},
