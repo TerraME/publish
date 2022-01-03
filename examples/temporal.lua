@@ -41,7 +41,7 @@ local proj = gis.Project{
 }
 
 Application{
-    key = "AIzaSyA1coAth-Bo7m99rnxOm2oOBB88AmaSbOk",
+    	key = "AIzaSyA1coAth-Bo7m99rnxOm2oOBB88AmaSbOk",
 	base = "roadmap",
 	project = proj,
 	uc = View{

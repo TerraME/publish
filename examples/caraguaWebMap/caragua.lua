@@ -50,7 +50,7 @@ report:addImage("urbis_simulation_2025_baseline.PNG", "publish")
 report:addText("The base scenario considers the zoning proposed by the new master plan of Caraguatatuba. This scenario shows how the new master plan consolidates existing patterns and trends, not being able to force significant changes in relation to the risk distribution observed in 2010.")
 
 Application{
-    key = "AIzaSyA1coAth-Bo7m99rnxOm2oOBB88AmaSbOk",
+    	key = "AIzaSyA1coAth-Bo7m99rnxOm2oOBB88AmaSbOk",
 	project = filePath("caragua.tview", "publish"),
 	description = "The data of this application were extracted from Feitosa et. al (2014) URBIS-Caraguá: "
 			.."Um Modelo de Simulação Computacional para a Investigação de Dinâmicas de Ocupação Urbana em Caraguatatuba, SP.",
