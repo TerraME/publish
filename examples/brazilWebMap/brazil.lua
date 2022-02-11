@@ -26,6 +26,15 @@
 
 import("publish")
 
+links = {
+	Amazonia           = "en.wikipedia.org/wiki/Amazon_biome",
+	Caatinga           = "en.wikipedia.org/wiki/Caatinga",
+	Cerrado            = "en.wikipedia.org/wiki/Cerrado",
+	Pampa              = "en.wikipedia.org/wiki/Pampas",
+	Pantanal           = "en.wikipedia.org/wiki/Pantanal",
+	["Mata Atlantica"] = "en.wikipedia.org/wiki/Atlantic_Forest"
+}
+
 Application{
 	key = "AIzaSyA1coAth-Bo7m99rnxOm2oOBB88AmaSbOk",
 	project = filePath("brazil.tview", "publish"),

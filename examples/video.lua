@@ -27,7 +27,7 @@
 import("publish")
 
 Application{
-  key = "AIzaSyA1coAth-Bo7m99rnxOm2oOBB88AmaSbOk",
+    key = "AIzaSyA1coAth-Bo7m99rnxOm2oOBB88AmaSbOk",
 	project = filePath("brazil.tview", "publish"),
 	title = "Brazil Application",
 	description = "Small application with a video player",
