@@ -34,7 +34,7 @@ proj = Project{
 }
 
 app = Application {
-    	key = "AIzaSyA1coAth-Bo7m99rnxOm2oOBB88AmaSbOk",
+  key = "AIzaSyA1coAth-Bo7m99rnxOm2oOBB88AmaSbOk",
 	project = proj,
 	description = "The data of this application were extracted from INLAND project (http://www.ccst.inpe.br/projetos/inland/).",
 	title = "Vegetation scenario",
