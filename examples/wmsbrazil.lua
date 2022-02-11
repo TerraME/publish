@@ -43,6 +43,7 @@ Layer {
 }
 
 Application {
+    	key = "AIzaSyA1coAth-Bo7m99rnxOm2oOBB88AmaSbOk", 
 	project = proj,
 	base = "terrain",
 	wmsLayer = View {

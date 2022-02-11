@@ -36,6 +36,7 @@ links = {
 }
 
 Application{
+	key = "AIzaSyA1coAth-Bo7m99rnxOm2oOBB88AmaSbOk",
 	project = filePath("brazil.tview", "publish"),
 	title = "Brazil Application",
 	description = "Small application with some data related to Brazil from "..link("www.ibge.gov.br", "IBGE")..".",
@@ -51,8 +52,9 @@ Application{
 				author = "IBGE"
 			}
 
+			mreport:addText(cell.name.." covers approximately "..cell.cover.."% of Brazil.")
 			mreport:addImage(filePath("biomes/"..cell.name..".jpg", "publish"))
-			mreport:addText("For more information, please visit "..link(links[cell.name], "here")..".")
+			mreport:addText("For more information, please visit "..link(cell.link, "here")..".")
 
 			return mreport
 		end
