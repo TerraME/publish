@@ -29,7 +29,7 @@ import("publish")
 
 
 Application{
-    key = "AIzaSyA1coAth-Bo7m99rnxOm2oOBB88AmaSbOk",
+    	key = "AIzaSyA1coAth-Bo7m99rnxOm2oOBB88AmaSbOk",
 	project = filePath("temporal-data.tview", "publish"),
 	--project = filePath("brazil.tview", "publish"),
 	title = "Brazil Application",
