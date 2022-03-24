@@ -30,6 +30,7 @@
 import("publish")
 
 Application{
+	key = "AIzaSyA1coAth-Bo7m99rnxOm2oOBB88AmaSbOk",
 	project = filePath("emas.tview", "publish"),
 	description = "A small example related to a fire spread model.",
 	order = {"cells", "river", "firebreak", "limit"},

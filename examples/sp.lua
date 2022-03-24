@@ -27,7 +27,8 @@
 
 import("publish")
 
-Application {
+Application{
+	key = "AIzaSyA1coAth-Bo7m99rnxOm2oOBB88AmaSbOk",
 	project = filePath("sp.tview", "publish"),
 	base = "roadmap",
 	municipalities = View {
