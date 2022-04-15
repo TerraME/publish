@@ -25,14 +25,15 @@
 			<div id="map"></div>
 		</div>
 		<div class="row main-row">
+		<!-- Menu -->
 			<div class="col-sm-4 col-md-2 sidebar sidebar-left pull-left">
-				<div class="panel-group sidebar-body" id="accordion-left">
+				<div class="panel-group sidebar-body panel-height" id="accordion-left">
 					{{#hasScenario}}
 					<div class="panel panel-default">
 						<div class="panel-heading padding-header" >
-							<h4 class="panel-title custom-font-subtitle">
-								<i class="fa fa-list-alt"></i><a data-toggle="collapse" href="#scenario"> Scenario</a>
-								<span class="pull-right slide-submenu"><i class="fa fa-chevron-left"></i></span>
+							<h4 class="panel-title custom-font-subtitle border body-font-color">
+								<i class=""></i><a data-toggle="collapse" href="#scenario"> Scenario</a>
+								<span class="pull-right slide-submenu icon-style"><i class="fa fa-times"></i></span>
 							</h4>
 						</div>
 						<div id="scenario" class="panel-collapse collapse in overflow-y">
@@ -52,9 +53,9 @@
 					{{/hasScenario}}
 					<div class="panel panel-default">
 						<div class="panel-heading padding-header" >
-							<h4 class="panel-title custom-font-subtitle">
-								<i class="fa fa-list-alt"></i><a id="layers-title" data-toggle="collapse" href="#layers"> Layers</a>
-								<span class="pull-right slide-submenu"><i class="fa fa-chevron-left"></i></span>
+							<h4 class="panel-title custom-font-subtitle border body-font-color">
+								<i class=""></i><a id="layers-title" data-toggle="collapse" href="#layers"> Layers</a>
+								<span class="pull-right slide-submenu icon-style"><i class="fa fa-times"></i></span>
 							</h4>
 						</div>
 						<div id="layers" class="panel-collapse collapse in overflow-y">
@@ -89,8 +90,8 @@
 					</div>
 					<div class="panel panel-default">
 						<div class="panel-heading padding-header">
-							<h4 class="panel-title custom-font-subtitle">
-								<i class="fa fa-list-alt"></i><a id="description-title" data-toggle="collapse" href="#properties"> Description</a>
+							<h4 class="panel-title custom-font-subtitle border body-font-color">
+								<i class=""></i><a id="description-title" data-toggle="collapse" href="#properties"> Description</a>
 							</h4>
 						</div>
 						<div id="properties" class="panel-collapse collapse overflow-y">
@@ -104,8 +105,8 @@
 					</div>
 					<div class="panel panel-default">
 						<div class="panel-heading padding-header">
-							<h4 class="panel-title custom-font-subtitle">
-								<i class="fa fa-list-alt"></i><a id="legend-title" data-toggle="collapse" href="#legends"> Legend</a>
+							<h4 class="panel-title custom-font-subtitle border body-font-color">
+								<i class=""></i><a id="legend-title" data-toggle="collapse" href="#legends"> Legend</a>
 							</h4>
 						</div>
 						<div id="legends" class="panel-collapse collapse overflow-y">
@@ -114,13 +115,14 @@
 					</div>
 					<div id="panel-download" class="panel panel-default">
 						<div class="panel-heading padding-header" style="height: 29px;">
-							<h4 class="panel-title custom-font-subtitle">
+							<h4 class="panel-title custom-font-subtitle border body-font-color">
 								<i class="fa fa-download"></i><a id="download-title"> Download</a>
 							</h4>
 						</div>
 					</div>
 				</div>
 			</div>
+		<!-- fim do menu -->
 		</div>
 		{{#slider}}
 		<div class="row">
@@ -136,8 +138,8 @@
 			</div>
 		</div>
 		{{/slider}}
-		<div class="mini-submenu mini-submenu-left pull-left">
-			<i class="fa fa-list-alt"></i>
+		<div class="mini-submenu mini-submenu-left pull-left icon-style">
+			<i class="fa fa-bars"></i>
 		</div>
 		<img id="loader" src="./{{loading}}" hidden="hidden"/>
 		<div id="loader-message"><h4 id="loader-message-text"></h4></div>

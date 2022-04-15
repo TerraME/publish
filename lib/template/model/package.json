@@ -1,33 +1,38 @@
 {
   "name": "model",
   "version": "1.0.0",
-  "description": "",
+  "description": "Publish tasks",
   "main": "config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "gulp": "gulp",
+    "lint": "gulp lint",
+    "distjs": "gulp distjs",
+    "distcss": "gulp distcss",
+    "minify": "gulp minify",
+    "watch": "gulp watch"
   },
-  "author": "",
+  "author": "Heitor Carneiro",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^4.12.0",
-    "eslint-plugin-import": "^2.8.0",
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "^2.0.13",
-    "gulp-concat": "^2.6.0",
-    "gulp-eslint": "^4.0.0",
-    "gulp-jshint": "^2.0.2",
-    "gulp-jsonminify": "^1.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^2.0.0",
-    "jshint": "^2.9.4",
-    "run-sequence": "^2.2.0"
+    "eslint": "4.18.2",
+    "eslint-plugin-import": "2.8.0",
+    "gulp": "3.9.1",
+    "gulp-clean-css": "2.0.13",
+    "gulp-concat": "2.6.0",
+    "gulp-eslint": "4.0.0",
+    "gulp-jshint": "2.0.2",
+    "gulp-jsonminify": "1.0.0",
+    "gulp-rename": "1.2.2",
+    "gulp-uglify": "2.0.0",
+    "jshint": "2.9.4",
+    "run-sequence": "2.2.0"
   },
   "dependencies": {
-    "connect": "^3.5.0",
-    "cors": "^2.8.1",
-    "express": "^4.14.0",
-    "gulp-install": "^1.1.0",
-    "path": "^0.12.7",
-    "socket.io": "^1.5.1"
+    "connect": "3.5.0",
+    "cors": "2.8.1",
+    "express": "4.14.0",
+    "gulp-install": "1.1.0",
+    "path": "0.12.7",
+    "socket.io": "2.4.0"
   }
 }
