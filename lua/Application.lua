@@ -1083,7 +1083,6 @@ local function processingView(data, layers, reports, name, view)
 				pink_home2 = true,
 				green_home = true,
 				green_home2 = true,
-
 				horseriding = true,
 				hospital = true,
 				lake = true,
