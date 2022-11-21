@@ -1012,12 +1012,18 @@ local function processingView(data, layers, reports, name, view)
 
 				view.icon = { view.icon }
 			end
-
+			
 			icon.options = {}
 			local set = {}
 			local label = view.label or {}
 			local markers = view.icon
 
+			-- troca de ione principal
+			if markers[1] == "home" and markers[2] == "forest" then 
+				markers[1] = "yellow_home"
+				markers[2] = "green_home"
+			end
+		
 			if view.select then
 				local col = view.select[2] or view.select
 				local nProp
@@ -1071,6 +1077,18 @@ local function processingView(data, layers, reports, name, view)
 				harbor = true,
 				helicopter = true,
 				home = true,
+				yellow_home = true,
+				yellow_home2 = true,
+				green_home = true,
+				green_home2 = true,
+				pink_home = true,
+				pink_home2 = true,
+				red_home = true,
+				red_home2 = true,
+				cyan_home = true,
+				cyan_home2 = true,
+				brown_home = true,
+				brown_home2 = true,
 				horseriding = true,
 				hospital = true,
 				lake = true,
@@ -1083,7 +1101,7 @@ local function processingView(data, layers, reports, name, view)
 				shipwreck = true,
 				thunderstorm = true
 			}
-
+			
 			local properties = view.value
 
 			if not properties then
